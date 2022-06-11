@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">{{num}}</div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          num: 10,
+        },
+        computed: {
+          // validation, text, 연산 쪽에 사용하면 좋을 거 같음
+          doubleNum: function () {
+            return this.num * 2;
+          },
+        },
+        watch: {
+          // 무거운 동작, 데이터 요청에 적합
+          num: function (newValue) {
+            this.fetchUserByNum(newValue);
+          },
+        },
+        methods: {
+          fetchUserByNum: function (num) {
+            // console.log(num);
+            // axios.get(num);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
