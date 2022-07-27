@@ -4,79 +4,19 @@ const context = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 800;
 
-//border 안이 채워진 사각형을 그릴 수 있는 함수
-context.fillRect(50, 50, 100, 200);
+// 사각 도형을 그릴 수 있는 함수, (단, fill함수를 이후 라인에 사용하지 않으면 도형은 보이지 않는다.)
+context.rect(50, 50, 100, 100);
+context.rect(150, 150, 100, 100);
+context.rect(250, 250, 100, 100);
 
-// const colors = document.getElementsByClassName("jsColor");
-// const range = document.getElementById("jsRange");
-// const fillBtn = document.getElementById('jsMode');
+// 도형에 색을 채우는 함수.
+context.fill();
 
-// canvas.width = 500;
-// canvas.height = 500;
+// 상단 도형과 경로(적용)를 분리시킬 때 사용
+context.beginPath();
+context.rect(350, 350, 100, 100);
+// 도형의 색상을 변경하는 프로퍼티
+context.fillStyle = 'blue';
+context.fill();
 
-// context.strokeStyle = "#2c2c2c";
-// context.lineWidth = 2.5;
 
-// let painting = false;
-// let filling = false;
-
-// function stopPainting(){
-//   painting = false;
-// }
-
-// function startPainting(){
-//   painting = true;
-// }
-
-// function onMouseMove(event){
-//   const x = event.offsetX;
-//   const y = event.offsetY;
-//   if(!painting){
-//     context.beginPath();
-//     context.moveTo(x,y);
-//   }else{
-//     context.lineTo(x,y);
-//     context.stroke();
-//   }
-// }
-
-// function onMouseDown(event){
-//   painting = true;
-// }
-
-// function onClickChangeColor(event){
-//   const thisColor = event.target.style.backgroundColor;
-//   context.strokeStyle = thisColor;
-// }
-
-// function handleRangeChange(event){
-//   const size = event.target.value;
-//   context.lineWidth = size;
-// }
-
-// function handleModeClick(event){
-//   if(filling === true){
-//     filling = false;
-//     fillBtn.innerText = "Fill"
-//   }else{
-//     filling = true;
-//     fillBtn.innerText = "Paint"
-//   }
-// }
-
-// if(canvas){
-//   canvas.addEventListener("mousemove", onMouseMove);
-//   canvas.addEventListener("mousedown", startPainting);
-//   canvas.addEventListener("mouseup", stopPainting);
-//   canvas.addEventListener("mouseleave", stopPainting);
-// }
-
-// Array.from(colors).forEach(color => color.addEventListener("click",onClickChangeColor));
-
-// if(range){
-//   range.addEventListener('input', handleRangeChange)
-// }
-
-// if(fillBtn){
-//   fillBtn.addEventListener('click', handleModeClick)
-// }
