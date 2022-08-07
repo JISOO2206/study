@@ -15,21 +15,23 @@
         data: {
           num: 10,
         },
+        //watch 보다는 computed를 사용하는 게 더 좋음.
+        // why? 코드가 너저분 해질 수 있고, computed가 내부적으로 더 튜닝이 많이 되어 있음
         computed: {
-          // validation, text, 연산 쪽에 사용하면 좋을 거 같음
+          // validation, text, 연산 쪽에 사용하면 좋을 거 같음 (빠르게 계산한다는 장점)
           doubleNum: function () {
             return this.num * 2;
           },
         },
         watch: {
-          // 무거운 동작, 데이터 요청에 적합
-          num: function (newValue) {
+          // 무거운 동작(매번 실행되는 게 부담스러운 로직), 데이터 요청에 적합
+          num: function (newValue, oldValue) {
             this.fetchUserByNum(newValue);
           },
         },
         methods: {
           fetchUserByNum: function (num) {
-            // console.log(num);
+            console.log(num);
             // axios.get(num);
           },
         },
