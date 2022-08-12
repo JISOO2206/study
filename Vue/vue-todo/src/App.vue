@@ -29,6 +29,8 @@ export default {
 body{
   text-align: center;
   background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
 }
 
 input {
@@ -40,8 +42,5 @@ button{
 }
 .shadow{
   box-shadow: 5px 10px 10px rgb(0, 0, 0, 0.03);
-}
-.title{
-  /* color: aqua; */
 }
 </style>
