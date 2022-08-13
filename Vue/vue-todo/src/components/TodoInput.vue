@@ -1,8 +1,10 @@
 <template>
   <div class="inputBox">
-    <input class="todoInput" type="text" @keyup="addTodo" v-model="newTodo">
+    <input class="todoInput" type="text" @keyup.enter="addTodo" v-model="newTodo">
     <div class="addContainer">
-      <button class="addBtn" @click="addTodo">ADD</button>
+      <button class="addBtn" @click="addTodo">
+        <i class="fa-solid fa-plus fa-lg"></i>
+      </button>
     </div>
   </div>
 </template>
@@ -16,8 +18,14 @@ export default {
   },
   methods : {
     addTodo(){
-      localStorage.setItem(this.newTodo, this.newTodo);
-      this.clearInput();
+      if(this.newTodo !== ''){
+        let obj = {completed : false, item: this.newTodo};
+        // JSON.stringify = > js obj를 string으로 변환해주는 API
+        // 해당 API를 사용해야 Aplication에서 value 값을 확인 할 수 있음.
+        // 미사용시 [object, object]형태로 보임
+        localStorage.setItem(this.newTodo, JSON.stringify(obj));
+        this.clearInput();
+      }
     },
     clearInput(){
       this.newTodo = '';
