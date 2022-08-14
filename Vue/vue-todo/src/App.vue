@@ -2,7 +2,7 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput></TodoInput>
-    <TodoList></TodoList>
+    <TodoList :propsData="todoArr"></TodoList>
     <TodoFooter></TodoFooter>
   </div>
 </template>
@@ -14,14 +14,26 @@ import TodoList from '@/components/TodoList.vue';
 import TodoFoorter from '@/components/TodoFoorter.vue';
 
 export default {
-  name: 'App',
+  data(){
+    return{
+      todoArr : []
+    }
+  },
+  //인스턴스가 생성되면 실행되는 라이프 사이클, 1번만 실행됨
+  created() {
+    if (localStorage.length > 0) {
+      for (let i = 0; i < localStorage.length; i++) {
+        this.todoArr.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+      }
+    }
+  },
   components: {
     // 컴포넌트 태그명 : 컴포넌트 내용
     "TodoHeader": TodoHeader,
     "TodoInput": TodoInput,
     "TodoList": TodoList,
     "TodoFooter": TodoFoorter,
-}
+  },
 }
 </script>
 
