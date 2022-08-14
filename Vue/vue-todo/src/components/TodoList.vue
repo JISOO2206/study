@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="listBox">
-      <li class="listItem shadow" v-for="(todoItem,index) in todoArr" v-bind:key="index">
+      <li class="listItem shadow" v-for="(todoItem,index) in propsData" v-bind:key="index">
         <span class="checkBtn" v-bind:class="{checkBtnCompleted: todoItem.completed}" @click="toggleComplete(todoItem)">
           <i class="fa-solid fa-check"></i>
         </span>
@@ -16,19 +16,9 @@
 
 <script>
 export default {
+  props: ['propsData'],
   data(){
     return{
-      todoArr : []
-    }
-  },
-  //인스턴스가 생성되면 실행되는 라이프 사이클, 1번만 실행됨
-  created(){
-    if(localStorage.length > 0){
-      console.log(localStorage)
-      for(let i = 0; i<localStorage.length; i++){
-        this.todoArr.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-        // this.todoArr.push(localStorage.value())
-      }
     }
   },
   methods: {
