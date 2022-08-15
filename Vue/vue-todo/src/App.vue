@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput></TodoInput>
+    <TodoInput @addTodo="addTodo"></TodoInput>
     <TodoList :propsData="todoArr"></TodoList>
     <TodoFooter></TodoFooter>
   </div>
@@ -19,6 +19,15 @@ export default {
       todoArr : []
     }
   },
+  methods: {
+    addTodo(addtodoItem){
+      let obj = { completed: false, item: addtodoItem };
+      // JSON.stringify = > js obj를 string으로 변환해주는 API
+      // 해당 API를 사용해야 Aplication에서 value 값을 확인 할 수 있음.
+      // 미사용시 [object, object]형태로 보임
+      localStorage.setItem(addtodoItem, JSON.stringify(obj));
+    }
+  },  
   //인스턴스가 생성되면 실행되는 라이프 사이클, 1번만 실행됨
   created() {
     if (localStorage.length > 0) {
