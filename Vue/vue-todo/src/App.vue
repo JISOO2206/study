@@ -2,7 +2,7 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput @addTodo="addTodo"></TodoInput>
-    <TodoList :propsData="todoArr"></TodoList>
+    <TodoList :propsData="todoArr" @removeTodoItem="removeTodoItem"></TodoList>
     <TodoFooter></TodoFooter>
   </div>
 </template>
@@ -26,6 +26,11 @@ export default {
       // 해당 API를 사용해야 Aplication에서 value 값을 확인 할 수 있음.
       // 미사용시 [object, object]형태로 보임
       localStorage.setItem(addtodoItem, JSON.stringify(obj));
+      this.todoArr.push(obj);
+    },
+    removeTodoItem(todoItem, index){
+      localStorage.removeItem(todoItem.item);
+      this.todoArr.splice(index, 1);
     }
   },  
   //인스턴스가 생성되면 실행되는 라이프 사이클, 1번만 실행됨

@@ -6,7 +6,7 @@
           <i class="fa-solid fa-check"></i>
         </span>
         <span class="todoContent" v-bind:class="{todoCompleted : todoItem.completed}">{{todoItem.item}}</span>
-        <button class="deleteBtn" @click="deleteTodo(item, index)">
+        <button class="deleteBtn" @click="deleteTodo(todoItem, index)">
           <i class="fa-solid fa-trash-can fa-lg"></i>
         </button>
       </li>
@@ -23,8 +23,7 @@ export default {
   },
   methods: {
     deleteTodo(todoItem, index){
-      localStorage.removeItem(todoItem);
-      this.todoArr.splice(index, 1);
+      this.$emit('removeTodoItem', todoItem, index);
     },
     toggleComplete(todoItem){
       todoItem.completed = !todoItem.completed;
