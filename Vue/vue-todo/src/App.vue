@@ -2,7 +2,8 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput @addTodo="addTodo"></TodoInput>
-    <TodoList :propsData="todoArr" @removeTodoItem="removeTodoItem"></TodoList>
+    <TodoList :propsData="todoArr" @removeTodoItem="removeTodoItem" @toggleItem="toggleItem">
+    </TodoList>
     <TodoFooter></TodoFooter>
   </div>
 </template>
@@ -31,6 +32,11 @@ export default {
     removeTodoItem(todoItem, index){
       localStorage.removeItem(todoItem.item);
       this.todoArr.splice(index, 1);
+    },
+    toggleItem(todoItem, index){
+      this.todoArr[index].completed = !this.todoArr[index].completed;
+      localStorage.removeItem(todoItem.item);
+      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
     }
   },  
   //인스턴스가 생성되면 실행되는 라이프 사이클, 1번만 실행됨
