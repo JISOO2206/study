@@ -2,7 +2,7 @@
   <div>
     <ul class="listBox">
       <li class="listItem shadow" v-for="(todoItem,index) in propsData" v-bind:key="index">
-        <span class="checkBtn" v-bind:class="{checkBtnCompleted: todoItem.completed}" @click="toggleComplete(todoItem)">
+        <span class="checkBtn" v-bind:class="{checkBtnCompleted: todoItem.completed}" @click="toggleComplete(todoItem, index)">
           <i class="fa-solid fa-check"></i>
         </span>
         <span class="todoContent" v-bind:class="{todoCompleted : todoItem.completed}">{{todoItem.item}}</span>
@@ -25,18 +25,14 @@ export default {
     deleteTodo(todoItem, index){
       this.$emit('removeTodoItem', todoItem, index);
     },
-    toggleComplete(todoItem){
-      todoItem.completed = !todoItem.completed;
-      //로컬 스토리지의 데이터를 갱신해야 할까?
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    toggleComplete(todoItem, index){
+      this.$emit('toggleItem', todoItem, index);
     }
   },
 }
 </script>
 
 <style scoped>
-
 
 .listBox{
   list-style-type: none;
