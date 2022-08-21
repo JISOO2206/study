@@ -13,7 +13,7 @@
         <span class="subInfo" slot="footer">
           내용을 입력하지 않으면 추가할 수 없습니다.
           <div>
-            <button @click="closeModal">확인</button>
+            <button class="closeModalBtn" @click="closeModal">확인</button>
           </div>
         </span>
       </PageModal>
@@ -55,6 +55,8 @@ export default {
 <style scoped>
 
 
+
+
   .todoInput:focus{
     outline: none;
   }
@@ -90,5 +92,11 @@ export default {
   .subInfo{
     font-size: 12px;
     color: red;
+  }
+
+  .closeModalBtn{
+    border: none;
+    padding: 5px 10px;
+    font-weight: 500;
   }
 </style>
