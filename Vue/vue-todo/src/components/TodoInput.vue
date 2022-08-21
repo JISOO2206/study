@@ -8,7 +8,14 @@
     </div>
     <div>
       <PageModal v-if="showModal">
-        <h3 slot="header">custom header</h3>
+        <h3 slot="header">경고!</h3>
+        <h3 slot="body">내용을 입력하세요</h3>
+        <span class="subInfo" slot="footer">
+          내용을 입력하지 않으면 추가할 수 없습니다.
+          <div>
+            <button @click="closeModal">확인</button>
+          </div>
+        </span>
       </PageModal>
     </div>
   </div>
@@ -29,10 +36,15 @@ export default {
       if(this.newTodo !== ''){
         this.$emit('addTodo', this.newTodo);
         this.clearInput();
+      }else{
+        this.closeModal();
       }
     },
     clearInput(){
       this.newTodo = '';
+    },
+    closeModal(){
+      this.showModal = !this.showModal;
     }
   },
   components: {
@@ -41,6 +53,7 @@ export default {
 }
 </script>
 <style scoped>
+
 
   .todoInput:focus{
     outline: none;
@@ -72,5 +85,10 @@ export default {
   }
   .addBtn:hover{
     cursor: pointer;
+  }
+
+  .subInfo{
+    font-size: 12px;
+    color: red;
   }
 </style>
