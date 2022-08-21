@@ -1,8 +1,9 @@
 <template>
   <div>
-    <ul class="listBox">
+    <transition-group class="listBox" name="list" tag="ul">
       <li class="listItem shadow" v-for="(todoItem,index) in propsData" v-bind:key="index">
-        <span class="checkBtn" v-bind:class="{checkBtnCompleted: todoItem.completed}" @click="toggleComplete(todoItem, index)">
+        <span class="checkBtn" v-bind:class="{checkBtnCompleted: todoItem.completed}"
+          @click="toggleComplete(todoItem, index)">
           <i class="fa-solid fa-check"></i>
         </span>
         <span class="todoContent" v-bind:class="{todoCompleted : todoItem.completed}">{{todoItem.item}}</span>
@@ -10,7 +11,7 @@
           <i class="fa-solid fa-trash-can fa-lg"></i>
         </button>
       </li>
-    </ul>
+    </transition-group>
   </div>
 </template>
 
@@ -33,6 +34,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 
 .listBox{
   list-style-type: none;
@@ -73,4 +76,23 @@ export default {
   text-decoration: line-through;
   color: #b3adad;
 }
+
+/*
+  리스트 아이템 트랜지션 효과
+*/
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+
+.list-enter,
+.list-leave-to
+
+/* .list-leave-active below version 2.1.8 */
+  {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 </style>
