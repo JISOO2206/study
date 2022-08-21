@@ -6,14 +6,22 @@
         <i class="fa-solid fa-plus fa-lg"></i>
       </button>
     </div>
+    <div>
+      <PageModal v-if="showModal">
+        <h3 slot="header">custom header</h3>
+      </PageModal>
+    </div>
   </div>
 </template>
 
 <script>
+import PageModal from '@/components/common/PageModal.vue';
+
 export default {
   data(){
     return {
-      newTodo : ''
+      newTodo : '',
+      showModal : false
     }
   },
   methods : {
@@ -26,6 +34,9 @@ export default {
     clearInput(){
       this.newTodo = '';
     }
+  },
+  components: {
+    "PageModal" : PageModal
   }
 }
 </script>
