@@ -48,7 +48,7 @@ export default {
     }
   },
   components: {
-    "PageModal" : PageModal
+    PageModal
   }
 }
 </script>
