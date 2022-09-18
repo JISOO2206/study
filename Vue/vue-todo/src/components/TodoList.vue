@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition-group class="listBox" name="list" tag="ul">
-      <li class="listItem shadow" v-for="(todoItem,index) in propsData" v-bind:key="index">
+      <li class="listItem shadow" v-for="(todoItem,index) in this.$store.state.todoItems" v-bind:key="index">
         <span class="checkBtn" v-bind:class="{checkBtnCompleted: todoItem.completed}"
           @click="toggleComplete(todoItem, index)">
           <i class="fa-solid fa-check"></i>
