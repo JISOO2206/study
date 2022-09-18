@@ -17,7 +17,6 @@
 
 <script>
 export default {
-  props: ['propsData'],
   data(){
     return{
     }
