@@ -34,7 +34,8 @@ export default {
   methods : {
     addTodo(){
       if(this.newTodo !== ''){
-        this.$emit('addTodo', this.newTodo);
+        // this.$emit('addTodo', this.newTodo);
+        this.$store.commit('addTodo', this.newTodo);
         this.clearInput();
       }else{
         this.closeModal();
