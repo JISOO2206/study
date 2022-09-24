@@ -2,7 +2,7 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput></TodoInput>
-    <TodoList :propsData="todoArr" @toggleItem="toggleItem">
+    <TodoList :propsData="todoArr">
     </TodoList>
     <TodoFooter @clearTodoList="clearTodoList"></TodoFooter>
   </div>
@@ -21,11 +21,6 @@ export default {
     }
   },
   methods: { // mutations와 같은 역할을 함.
-    toggleItem(todoItem, index){
-      this.todoArr[index].completed = !this.todoArr[index].completed;
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-    },
     clearTodoList(){
       localStorage.clear();
       this.todoArr = [];
