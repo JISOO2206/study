@@ -27,8 +27,14 @@ export const store = new Vuex.Store({
       state.todoItems.push(obj);
     },
     deleteTodo(state, todoObj){
-      localStorage.removeItem(todoObj.todoItem);
+      // 32번줄만 정작동하고, 31번줄은 작동안 함...
+      localStorage.removeItem(todoObj.todoItem.item);
       state.todoItems.splice(todoObj.index, 1);
+    },
+    toggleItem(state, todoObj){
+      state.todoItems[todoObj.index].completed = !state.todoItems[todoObj.index].completed;
+      localStorage.removeItem(todoObj.todoItem.item);
+      localStorage.setItem(todoObj.todoItem.item, JSON.stringify(todoObj.todoItem));
     }
   }
 });
