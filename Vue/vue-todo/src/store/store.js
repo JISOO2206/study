@@ -26,6 +26,9 @@ export const store = new Vuex.Store({
       localStorage.setItem(addtodoItem, JSON.stringify(obj));
       // this.todoArr.push(obj);
       state.todoItems.push(obj);
+    },
+    deleteTodo(state, todoItem, index){
+      console.log('실행한다')
     }
   }
 });
