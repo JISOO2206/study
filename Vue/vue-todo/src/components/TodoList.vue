@@ -23,11 +23,8 @@ export default {
   },
   methods: {
     deleteTodo(todoItem, index){
-      const obj = {
-        todoItem: todoItem,
-        index: index
-      }
-      this.$store.commit('deleteTodo', obj);
+      // ES6 문법으로 변환하여 전달
+      this.$store.commit('deleteTodo', { todoItem, index });
     },
     toggleComplete(todoItem, index){
       this.$emit('toggleItem', todoItem, index);
