@@ -4,7 +4,7 @@
     <TodoInput></TodoInput>
     <TodoList :propsData="todoArr">
     </TodoList>
-    <TodoFooter @clearTodoList="clearTodoList"></TodoFooter>
+    <TodoFooter></TodoFooter>
   </div>
 </template>
 
@@ -21,10 +21,6 @@ export default {
     }
   },
   methods: { // mutations와 같은 역할을 함.
-    clearTodoList(){
-      localStorage.clear();
-      this.todoArr = [];
-    }
   },  
   //인스턴스가 생성되면 실행되는 라이프 사이클, 1번만 실행됨
   created() {
