@@ -23,8 +23,11 @@ export default {
   },
   methods: {
     deleteTodo(todoItem, index){
-      // this.$emit('removeTodoItem', todoItem, index);
-      this.$store.commit('deleteTodo', todoItem, index);
+      const obj = {
+        todoItem: todoItem,
+        index: index
+      }
+      this.$store.commit('deleteTodo', obj);
     },
     toggleComplete(todoItem, index){
       this.$emit('toggleItem', todoItem, index);
