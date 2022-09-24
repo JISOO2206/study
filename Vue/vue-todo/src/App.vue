@@ -15,11 +15,6 @@ import TodoList from '@/components/TodoList.vue';
 import TodoFooter from '@/components/TodoFoorter.vue';
 
 export default {
-  data(){
-    return{
-      todoArr : []
-    }
-  },
   methods: { // mutations와 같은 역할을 함.
   },  
   //인스턴스가 생성되면 실행되는 라이프 사이클, 1번만 실행됨
