@@ -64,3 +64,10 @@ new Promise(function(resolve, reject){
   //2번째 then의 실행 완료하고 그 return 값을 받아 3번째 then 실행
   console.log(result); // 31
 });
+
+/**
+ * 프로미스 에러 처리
+ * 1. promise의 두 번째 인자를 사용
+ * 2. catch를 사용
+ * 가급적 catch를 사용해야 한다.(더 효율적)
+ */
