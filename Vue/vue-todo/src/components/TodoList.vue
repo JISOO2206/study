@@ -3,11 +3,11 @@
     <transition-group class="listBox" name="list" tag="ul">
       <li class="listItem shadow" v-for="(todoItem,index) in this.todoItems" v-bind:key="index">
         <span class="checkBtn" v-bind:class="{checkBtnCompleted: todoItem.completed}"
-          @click="toggleComplete(todoItem, index)">
+          @click="toggleComplete({todoItem, index})">
           <i class="fa-solid fa-check"></i>
         </span>
         <span class="todoContent" v-bind:class="{todoCompleted : todoItem.completed}">{{todoItem.item}}</span>
-        <button class="deleteBtn" @click="deleteTodo(todoItem, index)">
+        <button class="deleteBtn" @click="deleteTodo({todoItem, index})">
           <i class="fa-solid fa-trash-can fa-lg"></i>
         </button>
       </li>
@@ -17,7 +17,7 @@
 
 <script>
 
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
   data(){
@@ -25,13 +25,16 @@ export default {
     }
   },
   methods: {
-    deleteTodo(todoItem, index){
-      // ES6 문법으로 변환하여 전달
-      this.$store.commit('deleteTodo', { todoItem, index });
-    },
-    toggleComplete(todoItem, index){
-      this.$store.commit('toggleItem', {todoItem, index});
-    }
+    ...mapMutations({
+      // deleteTodo에 따로 인자를 선언하지 않아도 되는 이유는
+      // 위 템플릿에서 deleteTodo에 있는 인자를 알아서 들고 가기 때문.
+      deleteTodo: 'deleteTodo',
+      toggleComplete : 'toggleItem'
+    }),
+    // deleteTodo(todoItem, index){
+    //   // ES6 문법으로 변환하여 전달
+    //   this.$store.commit('deleteTodo', { todoItem, index });
+    // },
   },
   computed: {
     /**
@@ -51,7 +54,7 @@ export default {
      * mapGetters 안에 배열이 아닌 객체를 사용할 수 있음.
      * 객체로 사용할 때는 
      * {
-     *  객체 이름 : 'storedTodoItems'
+     *  컴포넌트 변수 명 : 'storedTodoItems'
      * }
      * 으로 사용할 떄 사용한다.
      */
