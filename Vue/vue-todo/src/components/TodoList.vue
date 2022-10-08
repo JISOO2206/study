@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition-group class="listBox" name="list" tag="ul">
-      <li class="listItem shadow" v-for="(todoItem,index) in this.$store.getters.stroredTodoItems" v-bind:key="index">
+      <li class="listItem shadow" v-for="(todoItem,index) in this.todoItems" v-bind:key="index">
         <span class="checkBtn" v-bind:class="{checkBtnCompleted: todoItem.completed}"
           @click="toggleComplete(todoItem, index)">
           <i class="fa-solid fa-check"></i>
@@ -30,6 +30,18 @@ export default {
       this.$store.commit('toggleItem', {todoItem, index});
     }
   },
+  computed: {
+    /**
+     * 해당 부분은 vue에서 권고하는 가이드
+     * template안에서는 JS 연산이라든지, 속성 조건을 최대한 줄이는 방법으로 
+     * template을 깔끔하게 표현해야 함
+     * 
+     * 연산은 script 안에서 해야 한다.
+     */
+    todoItems() {
+      return this.$store.getters.stroredTodoItems;
+    }
+  }
 }
 </script>
 
