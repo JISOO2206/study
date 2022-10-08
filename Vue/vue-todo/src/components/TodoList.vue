@@ -16,6 +16,9 @@
 </template>
 
 <script>
+
+import { mapGetters } from 'vuex';
+
 export default {
   data(){
     return{
@@ -41,6 +44,17 @@ export default {
     todoItems() {
       return this.$store.getters.stroredTodoItems;
     }
+
+    /**
+     * ...mapGetters(['storedTodoItems'])로 사용하는 방법도 있음
+     * 
+     * mapGetters 안에 배열이 아닌 객체를 사용할 수 있음.
+     * 객체로 사용할 때는 
+     * {
+     *  객체 이름 : 'storedTodoItems'
+     * }
+     * 으로 사용할 떄 사용한다.
+     */
   }
 }
 </script>
