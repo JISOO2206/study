@@ -4,28 +4,53 @@
   <body>
     <div id="root"></div>
   </body>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script>
+  <script type="text/babel">
     const root = document.getElementById("root");
-    const span = React.createElement(
-      "span",
-      {
-        onMouseEnter: () => console.log("mouse over"),
-      },
-      "Total Clicks : 0"
-    );
+    function Title() {
+      return (
+        <h4 id="title" onMouseEnter={() => console.log("mouse over")}>
+          Total Clicks : 0
+        </h4>
+      );
+    }
+    // const span = React.createElement(
+    //   "span",
+    //   {
+    //     onMouseEnter: () => console.log("mouse over"),
+    //   },
+    //   "Total Clicks : 0"
+    // );
     // // 8번 라인처럼 작성하면 dom에 span 태그가 생성되는데 실제로 만들려면
     // // react-dom을 사용해야 함
-    const button = React.createElement(
-      "button",
-      {
-        onClick: () => console.log("im click!"),
-      },
-      "Click me!"
+    // const button = React.createElement(
+    //   "button",
+    //   {
+    //     style: { color: "red" },
+    //     onClick: () => console.log("im click!"),
+    //   },
+    //   "Click me!"
+    // );
+    function Button() {
+      return (
+        <button
+          style={{ color: "red" }}
+          onClick={() => console.log("click me!")}
+        >
+          Click me!
+        </button>
+      );
+    }
+    // 컴포넌트의 첫 글자는 반드시 대문자여야 한다
+    const Container = (
+      <div>
+        <Title />
+        <Button />
+      </div>
     );
-    const container = React.createElement("div", null, [span, button]);
 
-    ReactDOM.render(container, root);
+    ReactDOM.render(Container, root);
   </script>
 </html>
