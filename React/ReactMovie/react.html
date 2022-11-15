@@ -1,0 +1,21 @@
+<!-- index.html에 있는 기능을 reactJS로 만들어보기 -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script>
+    const root = document.getElementById("root");
+    const span = React.createElement(
+      "span",
+      { id: "thisSpan", style: { color: "red" } },
+      "Hello, I'm span!"
+    );
+    // 8번 라인처럼 작성하면 dom에 span 태그가 생성되는데 실제로 만들려면
+    // react-dom을 사용해야 함
+
+    ReactDOM.render(span, root);
+  </script>
+</html>
