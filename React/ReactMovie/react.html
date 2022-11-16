@@ -9,33 +9,21 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-    let count = 0;
-    function Title() {
-      return <h4>Total Clicks : {count}</h4>;
-    }
-    function Button() {
-      return (
-        <button style={{ color: "red" }} onClick={countUp}>
-          Click me!
-        </button>
-      );
-    }
-    function countUp() {
-      count += 1;
-      reRender();
-    }
-    function reRender() {
-      ReactDOM.render(<Container />, root);
-    }
     // 컴포넌트의 첫 글자는 반드시 대문자여야 한다
-    function Container() {
+    function App() {
+      let [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        setCounter((counter += 1));
+      };
       return (
         <div>
-          <Title />
-          <Button />
+          <h4>Total Clicks : {counter}</h4>
+          <button style={{ color: "red" }} onClick={onClick}>
+            Click me!
+          </button>
         </div>
       );
     }
-    reRender();
+    ReactDOM.render(<App />, root);
   </script>
 </html>
