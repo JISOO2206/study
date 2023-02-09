@@ -10,8 +10,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class MemberApp {
     public static void main(String[] args) {
         // member 홍길동 가입
-        /*AppConfig appConfig = new AppConfig();
-        MemberService memberService = appConfig.memberService();*/
 
         //ApplicationContext : 스프링 컨테이너, 객체들을 관리해 준다.
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
