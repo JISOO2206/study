@@ -14,6 +14,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
+    // 팩토리 메서드를 사용해서 빈을 등록하는 방법
+
     @Bean
     public MemberService memberService(){
         return new MemberServiceImpl(memberRepository());
