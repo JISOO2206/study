@@ -11,7 +11,7 @@ export const router = new VueRouter({
   routes: [
     {
       path: '/',
-      component: NewsView
+      redirect: '/news'
     },
     {
       // path : url 주소
