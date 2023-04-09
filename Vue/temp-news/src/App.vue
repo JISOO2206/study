@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    hello
-    ddsfsd
+    <router-view></router-view>
   </div>
 </template>
 
