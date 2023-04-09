@@ -6,21 +6,25 @@ import JobsView from '../views/JobsView.vue';
 
 Vue.use(VueRouter);
 
-export const router = VueRouter({
+export const router = new VueRouter({
   routes: [
+    {
+      path: '/',
+      component: NewsView
+    },
     {
       // path : url 주소
       path: '/news',
       // path : url 주소로 갔을 때 표시될 컴포넌트
-      comments: NewsView
+      component: NewsView
     },
     {
       path: '/ask',
-      comments: AskView
+      component: AskView
     },
     {
       path: 'jobs',
-      comments: JobsView
+      component: JobsView
     }
   ]
 });
